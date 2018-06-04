@@ -27,4 +27,10 @@ $(document).ready(function(){
 // Add all the div's to the HTML
   document.getElementById('memory_board').innerHTML = html;
 
+
+//$('.class).on('click', function () {
+  
+//}
+
+
 });  // end of document ready

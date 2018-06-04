@@ -37,3 +37,20 @@ Game.prototype.randomMatrix = function (n) {
   return matrix;
 }
 
+// check if a move is possible:
+checkMove = function () {
+
+}
+
+// check if game was won:
+Game.prototype.checkWin = function () {
+  // compare board array and stones array, 
+  // put array elements in string for comparison
+  if( ('' + this.board) == ('' + this.stones) ){
+    return true;
+  }else{
+    return false;
+  }
+  // dispaly win (later: animation)
+
+}
