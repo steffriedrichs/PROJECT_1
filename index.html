@@ -2,10 +2,49 @@
 <html>
 <head>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <!-- <link rel="stylesheet" href="style.css"> -->
-  <title>Example Page</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="text/javascript" src="game.js"></script>
+  <script type="text/javascript" src="main.js"></script>
+  <title>Project 1 - Game</title>
 </head>
 <body>
-  <h1>Git test page</h1>
+<div id="container">
+<!-- header --> 
+  <div id="header">
+    <h1 id="name">Name</h1>
+  </div>
+  <!-- left --> 
+  <div class="flexbox">
+  <div id="left-box">
+      <h2 id="size">Size</h2>
+      <div>
+        <input type="radio" id="3x3" value="3 x 3">
+        <label for="3x3">3 x 3</label>
+      </div>
+      <div>
+        <input type="radio" id="4x4" value="4 x 4">
+        <label for="4x4">4 x 4</label>
+      </div>
+      <div>
+        <input type="radio" id="5x5" value="5 x 5">
+        <label for="5x5">5 x 5</label>     
+      </div>
+      <div>
+        <input type="radio" id="6x6" value="6 x 6">
+        <label for="6x6">6 x 6</label>    
+      </div>
+  </div>
+  <!-- middle --> 
+  <div id="middle-box">
+      <div id="gameBoard">Game board</div>
+  </div>
+  <!-- right --> 
+  <div id="right-box">
+      <h2 id="size">Score</h2>
+      <p><span id="score">0000</span></p>
+      <button type="button" id="newGameButton">New Game</button>
+  </div>
+</div>
+</div>  
 </body>  
 </html>

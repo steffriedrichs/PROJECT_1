@@ -1,0 +1,81 @@
+ /* general properties */
+*{
+  font-family: Verdana, 'Lucida Sans Unicode', sans-serif;
+  color: #a64073;
+}
+#container{
+  width: 96%;
+  height: 96%;
+  margin: 2% 2% 2% 2%;
+  background: #d9c4d1;
+}
+.flexbox{
+  display: flex;
+  justify-content: space-around;
+  height: 100%;
+  width: 100%;
+  border: 3px solid orangered;
+  /* flex-wrap: wrap; -> if screen to small -> to do*/
+}
+body{
+  border: 3px solid darkmagenta;
+}
+
+/* name section */
+  /* #header{
+    border: 3px solid darkmagenta;
+  } */
+  #name{
+    text-align: center;
+    padding: 5% 0% 3% 0%;
+  }
+
+/* main area */
+
+/* left side - size selection */
+  #left-box{
+    text-align: center;
+    display: flex;
+    /* justify-content: center; */
+    flex-direction: column; 
+    align-items: center;
+    width: 24%;
+    height: 100%;
+    border: 3px solid darkblue;
+  }
+
+/* middle section - main part - game board */
+  #middle-box{
+    display: flex;
+    justify-content: center;
+    width: 49%;   
+    height: 100%;
+    border: 3px solid darkblue;
+  }
+  #gameBoard{
+    height: 300px;
+    width: 300px;
+    margin: 10% 10%;
+    border: 5px solid #a64073;
+  }
+  
+/* right column - score + new game button */
+  #right-box{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    width: 24%;
+    height: 100%;
+    border: 3px solid darkblue;
+  }
+  #newGameButton{
+    color: white;
+    font-size: 110%;
+    padding: 7% 7%;
+    background: #a64073;
+    align-self: center; 
+  }
+/* .float{
+  float: left;
+} */
