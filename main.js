@@ -1,34 +1,40 @@
-  // create new game:
-  var myGame = new Game(); 
-
-  // TO DO:  get n from user's choice; default is 3
-  var n = 3;
-
-  myGame.board = myGame.randomMatrix(n);
-  myGame.stones = myGame.randomMatrix(n);
-
+// create new game:
+var myGame = new Game(); 
 
 $(document).ready(function(){
 
-  //var html = '';
-  // memoryGame.cards.forEach(function (pic, index) {
-  //   html += '<div class= "card" id="card_' + pic.name + '">';
-  //   html += '<div class="back"';
-  //   html += '    name="'       + pic.img +  '">';
-  //   html += '</div>';
-  //   html += '<div class="front" ';
-  //   html += 'style="background: url(img/' + pic.img + ') no-repeat">';
-  //   html += '</div>';
-  //   html += '</div>';
-  // });
+//get Board Size from user's choice:
+$( "input" ).click(function() {
+  myGame.n = Number($("input[name='Size']:checked").attr("id"));
+  myGame.board = myGame.randomMatrix(myGame.n);
+  myGame.stones = myGame.randomMatrix(myGame.n);
+  //display Board in correct size:
+  //create correct number (n * n) of DOM elements 
+  $("#gameBoard").empty();
+  for(var numFields = 0; numFields < myGame.n * myGame.n; numFields++ ){
+    $("#gameBoard").append('<div class="field fieldSize' + myGame.n + 'x' + myGame.n +'"></div>');
+  }
+});
+// display marked fields in different color
+
+
+// $("rowSelector").click(function() {
+//   $( this ).toggleClass("inactive");
+// });
+
+
+// $( "rowSelector" ).click(function() {
+//    $( this ).toggleClass("inactive");
+// });
+
+//maybe select row/col like in hearts example:
+// $('.heart').click(function(){
+//   $(this).addClass('on');
+//   $(this).prevAll().addClass('on');
+// });
 
 // Add all the div's to the HTML
   //document.getElementById('memory_board').innerHTML = html;
-
-
-//$('.class).on('click', function () {
-  // if makeMove returns true -> call 'check, if won' function
-//}
 
 
 });  // end of document ready

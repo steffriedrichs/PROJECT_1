@@ -18,8 +18,9 @@ Game.prototype.randomMatrix = function (n) {
     } 
     matrix.push(subMat);
   }
-  // select x random fields to be marked: //var x = Math.round(n*n/2);  OR (first numbers)
-  var numFieldstoSelect = 2*n - 1;
+  // select x random fields to be marked: 
+  var numFieldstoSelect = Math.round(n*n/2); 
+  //  OR (first numbers): var numFieldstoSelect = 2*n - 1;
   // now select x random indices in the matrix:
   var selectedFields = [];
   while(selectedFields.length < numFieldstoSelect){
@@ -84,8 +85,8 @@ Game.prototype.makeMove = function (isRow, userSelection, moveDirection) {
       //return false, if move goes outside board:
       return false;
     }
-  } // end else 'is column'
-} // end function
+  }
+} 
 
 
 // check if game was won:
