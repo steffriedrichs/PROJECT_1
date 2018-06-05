@@ -16,23 +16,17 @@
   <!-- left --> 
   <div class="flexbox">
   <div id="left-box">
-      <h2 id="size">Size</h2>
-      <div>
-        <input type="radio" id="3x3" value="3 x 3">
-        <label for="3x3">3 x 3</label>
-      </div>
-      <div>
-        <input type="radio" id="4x4" value="4 x 4">
-        <label for="4x4">4 x 4</label>
-      </div>
-      <div>
-        <input type="radio" id="5x5" value="5 x 5">
-        <label for="5x5">5 x 5</label>     
-      </div>
-      <div>
-        <input type="radio" id="6x6" value="6 x 6">
-        <label for="6x6">6 x 6</label>    
-      </div>
+      <form> 
+        <h2 id="size">Size</h2>        
+        <input type="radio" id="3x3" name="Size" value="3 x 3">
+        <label for="3x3">3 x 3</label><br>
+        <input type="radio" id="4x4" name="Size" value="4 x 4">
+        <label for="4x4">4 x 4</label><br>
+        <input type="radio" id="5x5" name="Size" value="5 x 5">
+        <label for="5x5">5 x 5</label><br> 
+        <input type="radio" id="6x6" name="Size" value="6 x 6">
+        <label for="6x6">6 x 6</label><br> 
+      </form>
   </div>
   <!-- middle --> 
   <div id="middle-box">
@@ -40,7 +34,7 @@
   </div>
   <!-- right --> 
   <div id="right-box">
-      <h2 id="size">Score</h2>
+      <h2 id="score">Score</h2>
       <p><span id="score">0000</span></p>
       <button type="button" id="newGameButton">New Game</button>
   </div>

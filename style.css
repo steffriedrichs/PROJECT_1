@@ -1,13 +1,15 @@
  /* general properties */
 *{
   font-family: Verdana, 'Lucida Sans Unicode', sans-serif;
-  color: #a64073;
+  /* color: #a64073; */
+  color: rgb(209, 108, 25);
 }
 #container{
   width: 96%;
   height: 96%;
   margin: 2% 2% 2% 2%;
-  background: #d9c4d1;
+  background:  rgba(226, 161, 39, 0.3);
+  /* background: #d9c4d1; */
 }
 .flexbox{
   display: flex;

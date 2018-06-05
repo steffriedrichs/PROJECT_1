@@ -38,7 +38,40 @@ Game.prototype.randomMatrix = function (n) {
 }
 
 // check if a move is possible:
-checkMove = function () {
+Game.prototype.checkMove = function (isRow, userSelection, moveDirection) {
+  // take stones array. calculate new positions after move. 
+  // if outside array -> not possible (-> display some red blinking.. )
+
+// parameters:
+//isRow=true for row and isRow=false for column
+//userSelection in (0,..., n-1) -> a row or col index
+//moveDirection:  +- 1 
+
+// if it's a row, use first index as userSelection:
+if(isRow){
+
+  //if move can be made update stones array:
+  if(moveDirection == 1 && a[userSelection][this.n-1] == 0){
+    //this.stones[userSelection] = "moved line";
+    a[userSelection].pop();
+    a[userSelection].unshift(0);
+    return true;
+  }else if(moveDirection == -1 && a[userSelection][0] == 0){
+    a[userSelection] = a[userSelection].slice(1).unshift(0); 
+    return true;
+  }else{  
+    //return false, if move goes outside board:
+    return false;
+  }
+
+  
+}else{
+  //use second index as userSelection
+  a[][userSelection]
+
+
+}
+
 
 }
 
