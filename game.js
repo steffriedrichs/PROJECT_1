@@ -38,42 +38,59 @@ Game.prototype.randomMatrix = function (n) {
 }
 
 // check if a move is possible:
-Game.prototype.checkMove = function (isRow, userSelection, moveDirection) {
-  // take stones array. calculate new positions after move. 
-  // if outside array -> not possible (-> display some red blinking.. )
-
-// parameters:
-//isRow=true for row and isRow=false for column
-//userSelection in (0,..., n-1) -> a row or col index
-//moveDirection:  +- 1 
-
-// if it's a row, use first index as userSelection:
-if(isRow){
-
-  //if move can be made update stones array:
-  if(moveDirection == 1 && a[userSelection][this.n-1] == 0){
-    //this.stones[userSelection] = "moved line";
-    a[userSelection].pop();
-    a[userSelection].unshift(0);
-    return true;
-  }else if(moveDirection == -1 && a[userSelection][0] == 0){
-    a[userSelection] = a[userSelection].slice(1).unshift(0); 
-    return true;
-  }else{  
-    //return false, if move goes outside board:
-    return false;
-  }
-
+// take stones array and calculate new positions after move 
+// if outside array -> not possible (-> display some red blinking.. )
+Game.prototype.makeMove = function (isRow, userSelection, moveDirection) {
+ 
+  // parameters:
+  //isRow=true for row and isRow=false for column
+  //userSelection in (0,..., n-1) -> a row or col index
+  //moveDirection:  +- 1 
   
-}else{
-  //use second index as userSelection
-  a[][userSelection]
+  // if it's a row, use first index as userSelection:
+  if(isRow){
+    //if move can be made update stones array:
+    if(moveDirection == 1 && this.stones[userSelection][this.n-1] == 0){
+      //this.stones[userSelection] = "moved line";
+      this.stones[userSelection].pop(); 
+      this.stones[userSelection].unshift(0);
+      return true;
+    }else if(moveDirection == -1 && this.stones[userSelection][0] == 0){
+      this.stones[userSelection].shift();
+      this.stones[userSelection].push(0);   
+      return true;
+    }else{  
+      //return false, if move goes outside board:
+      return false;
+    }
+  // if it's a column, use second index as userSelection:
+  }else{
+    var myCol = [];
+    for(var j = 0; j < this.n; j++){
+      myCol.push(this.stones[j][userSelection]);
+    }
+    if(moveDirection == 1 && myCol[this.n-1] == 0){
+      myCol.pop(); 
+      myCol.unshift(0);
+      for(var k = 0; k < this.n; k++){
+        this.stones[k][userSelection]=myCol[k];
+      }
+      return true;
+    }else if(moveDirection == -1 && myCol[0] == 0){
+      myCol.shift();
+      myCol.push(0);  
+      for(var k = 0; k < this.n; k++){
+        this.stones[k][userSelection] = myCol[k];
+      } 
+      return true;
+    }else{  
+      //return false, if move goes outside board:
+      return false;
+    }
+  } // end else 'is column'
+} // end function
 
 
-}
-
-
-}
 
 // check if game was won:
 Game.prototype.checkWin = function () {
