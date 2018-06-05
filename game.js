@@ -37,15 +37,12 @@ Game.prototype.randomMatrix = function (n) {
   return matrix;
 }
 
-// check if a move is possible:
-// take stones array and calculate new positions after move 
-// if outside array -> not possible (-> display some red blinking.. )
+
+// function to move the stones, checks, if move is possible:
 Game.prototype.makeMove = function (isRow, userSelection, moveDirection) {
- 
-  // parameters:
-  //isRow=true for row and isRow=false for column
-  //userSelection in (0,..., n-1) -> a row or col index
-  //moveDirection:  +- 1 
+  // isRow=true for row and isRow=false for column
+  // userSelection in (0,..., n-1) -> a row or col index
+  // moveDirection:  +- 1 
   
   // if it's a row, use first index as userSelection:
   if(isRow){
@@ -91,7 +88,6 @@ Game.prototype.makeMove = function (isRow, userSelection, moveDirection) {
 } // end function
 
 
-
 // check if game was won:
 Game.prototype.checkWin = function () {
   // compare board array and stones array, 
@@ -102,5 +98,4 @@ Game.prototype.checkWin = function () {
     return false;
   }
   // dispaly win (later: animation)
-
 }

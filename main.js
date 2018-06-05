@@ -1,18 +1,16 @@
+  // create new game:
+  var myGame = new Game(); 
 
+  // TO DO:  get n from user's choice; default is 3
+  var n = 3;
+
+  myGame.board = myGame.randomMatrix(n);
+  myGame.stones = myGame.randomMatrix(n);
 
 
 $(document).ready(function(){
 
-  // create new game:
-  var myGame = new Game(); 
-
-  // TO DO:  get n from user's choice
-  var n = 3;
-
-  myGame.board = randomMatrix(n);
-  myGame.stones = randomMatrix(n);
-
-  var html = '';
+  //var html = '';
   // memoryGame.cards.forEach(function (pic, index) {
   //   html += '<div class= "card" id="card_' + pic.name + '">';
   //   html += '<div class="back"';
@@ -25,11 +23,11 @@ $(document).ready(function(){
   // });
 
 // Add all the div's to the HTML
-  document.getElementById('memory_board').innerHTML = html;
+  //document.getElementById('memory_board').innerHTML = html;
 
 
 //$('.class).on('click', function () {
-  
+  // if makeMove returns true -> call 'check, if won' function
 //}
 
 

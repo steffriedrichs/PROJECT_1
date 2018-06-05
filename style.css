@@ -13,14 +13,16 @@
 }
 .flexbox{
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;  /* still a bit weird... */ 
   justify-content: space-around;
+  align-items: start;
   height: 100%;
   width: 100%;
-  border: 3px solid orangered;
-  /* flex-wrap: wrap; -> if screen to small -> to do*/
+  /* border: 3px solid orangered; */
 }
 body{
-  border: 3px solid darkmagenta;
+  /* border: 3px solid darkmagenta; */
 }
 
 /* name section */
@@ -29,7 +31,7 @@ body{
   } */
   #name{
     text-align: center;
-    padding: 5% 0% 3% 0%;
+    padding: 5% 0% 0% 0%;
   }
 
 /* main area */
@@ -38,27 +40,30 @@ body{
   #left-box{
     text-align: center;
     display: flex;
-    /* justify-content: center; */
+    justify-content: center;
     flex-direction: column; 
     align-items: center;
-    width: 24%;
+    width: 20%;
     height: 100%;
-    border: 3px solid darkblue;
+    padding: 5% 0%;
+    /* border: 3px solid darkblue; */
   }
 
 /* middle section - main part - game board */
   #middle-box{
     display: flex;
     justify-content: center;
-    width: 49%;   
+    align-items: center;
+    width: 55%;   
     height: 100%;
-    border: 3px solid darkblue;
+    /* border: 3px solid darkblue; */
   }
   #gameBoard{
     height: 300px;
     width: 300px;
     margin: 10% 10%;
-    border: 5px solid #a64073;
+    border: 5px solid black;
+    background: white;
   }
   
 /* right column - score + new game button */
@@ -67,17 +72,18 @@ body{
     display: flex;
     flex-direction: column;
     justify-content: center; 
-    width: 24%;
+    align-items: center;
+    width: 20%;
     height: 100%;
-    border: 3px solid darkblue;
+    padding: 5% 0%;
+    /* border: 3px solid darkblue; */
   }
   #newGameButton{
     color: white;
     font-size: 110%;
     padding: 7% 7%;
-    background: #a64073;
+    background: rgb(167, 38, 6); 
+    /* background: #a64073; */
     align-self: center; 
   }
-/* .float{
-  float: left;
-} */
+
