@@ -74,6 +74,9 @@ body{
     background: rgb(219, 216, 216);
     border-radius: 1px;
   }
+  .marked{
+    background: rgb(82, 82, 82);
+  }
   .fieldSize3x3{
     height: 30%;
     width: 30%;

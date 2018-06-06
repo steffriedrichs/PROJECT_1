@@ -8,14 +8,24 @@ $( "input" ).click(function() {
   myGame.n = Number($("input[name='Size']:checked").attr("id"));
   myGame.board = myGame.randomMatrix(myGame.n);
   myGame.stones = myGame.randomMatrix(myGame.n);
+
   //display Board in correct size:
   //create correct number (n * n) of DOM elements 
   $("#gameBoard").empty();
   for(var numFields = 0; numFields < myGame.n * myGame.n; numFields++ ){
-    $("#gameBoard").append('<div class="field fieldSize' + myGame.n + 'x' + myGame.n +'"></div>');
+    $("#gameBoard").append('<div class="field '+numFields+' fieldSize'+myGame.n+'x'+myGame.n+'"></div>');
+  }
+
+  //display marked fields in different color:
+  var markedFields = '' + myGame.board;  
+  markedFields = markedFields.split(','); //removes ',' between numbers!
+  for(var f = 0; f < markedFields.length; f++){
+    if(markedFields[f] == 1){
+        //change color of corresponding div - toggle marked class
+        $(".field."+f).toggleClass("marked"); // selector: ".oneclass.otherclass"
+    }
   }
 });
-// display marked fields in different color
 
 
 // $("rowSelector").click(function() {
