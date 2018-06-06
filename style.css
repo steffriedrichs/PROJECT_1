@@ -13,21 +13,15 @@
 }
 .flexbox{
   display: flex;
-  flex-wrap: wrap;  /* still a bit weird... */ 
+  flex-wrap: wrap; 
   justify-content: center;
   align-items: start;
   height: 100%;
   width: 100%;
   /* border: 3px solid orangered; */
 }
-body{
-  /* border: 3px solid darkmagenta; */
-}
 
 /* name section */
-  /* #header{
-    border: 3px solid darkmagenta;
-  } */
   #name{
     text-align: center;
     padding: 5% 0% 0% 0%;
@@ -45,7 +39,6 @@ body{
     width: 20%;
     height: 100%;
     padding: 5% 0%;
-    /* border: 3px solid darkblue; */
   }
 
 /* middle section - main part - game board */
@@ -55,13 +48,13 @@ body{
     align-items: center;
     width: 55%;   
     height: 100%;
-    /* border: 3px solid darkblue; */
   }
   #gameBoard{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
     align-items: center;
+    position: relative;
     height: 300px;
     width: 300px;
     margin: 10% 10%;
@@ -69,13 +62,24 @@ body{
     border-radius: 10px;
     background: white;
   }
+  .stone{
+    z-index: 20;
+    position: absolute;
+    justify-content: space-around;
+    height: 15%;
+    width: 15%;
+    background: rgb(51, 7, 7);
+    border-radius: 100px;
+  }
   .field{
+    z-index: 10;
     padding: 1% 1% 1% 1%;
-    background: rgb(219, 216, 216);
+    background: rgb(211, 200, 200);
     border-radius: 1px;
+    position: relative;
   }
   .marked{
-    background: rgb(82, 82, 82);
+    background: rgb(104, 88, 88);
   }
   .fieldSize3x3{
     height: 30%;
@@ -93,6 +97,9 @@ body{
     height: 14%;
     width: 14%;
   }
+.hidden{
+  display: none;
+}
   /* .rowSelector{
     float: left;
     border: 2px solid rgba(18, 26, 131, 0.678);
@@ -110,9 +117,7 @@ body{
     width: 29%;
     margin: 1% 1%;
   } */
-  .inactive{
-    display: none;
-  }
+
   
 /* right column - score + new game button */
   #right-box{
@@ -124,7 +129,6 @@ body{
     width: 20%;
     height: 100%;
     padding: 5% 0%;
-    /* border: 3px solid darkblue; */
   }
   #newGameButton{
     color: white;
@@ -133,7 +137,6 @@ body{
     margin: 15% 0%;
     border-radius: 20px;
     background: rgb(167, 38, 6); 
-    /* background: #a64073; */
     align-self: center; 
   }
 
