@@ -91,11 +91,9 @@
   }
   .marked{
     background: rgba(112, 102, 96, 0.5);
-    /* background: rgba(104, 88, 88,0.5); */
   }
   .active{
-    border-radius: 1px;
-    border: 1.5px solid rgb(36, 1, 192);
+    opacity: 0.4;
   }
   .fieldSize3x3{
     height: 30%;
