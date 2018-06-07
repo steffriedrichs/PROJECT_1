@@ -81,6 +81,10 @@
   .marked{
     background: rgb(104, 88, 88);
   }
+  .active{
+    border-radius: 1px;
+    border: 1.5px solid rgb(36, 1, 192);
+  }
   .fieldSize3x3{
     height: 30%;
     width: 30%;
@@ -94,8 +98,9 @@
     width: 17%;
   }
   .fieldSize6x6{
-    height: 14%;
-    width: 14%;
+    /* soll 14% sein */
+    height: 13.5%; 
+    width: 13.5%;
   }
 .hidden{
   display: none;

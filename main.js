@@ -8,6 +8,8 @@ $( "input" ).click(function() {
   myGame.n = Number($("input[name='Size']:checked").attr("id"));
   myGame.board = myGame.randomMatrix(myGame.n);
   myGame.stones = myGame.randomMatrix(myGame.n);
+  myGame.isRow = true;
+  myGame.userSelection = 0;
   //display Board, empty first 
   $("#gameBoard").empty();
   // create correct number (n * n) of DOM elements 
@@ -31,49 +33,84 @@ $( "input" ).click(function() {
     } 
     }
   }
+  // set first row as default activation:
+  activateFieds(true,0,myGame.n); 
 });
+
+function activateFieds(isRow,userSelection,n){
+  switch(isRow) {
+    case true:
+      for(var col = 0; col < n; col++){
+        $(".field.field"+userSelection+col).toggleClass("active"); 
+        console.log("field: "+userSelection+" "+col);
+      }
+      break;
+    case false:
+      for(var row = 0; row < n; row++){
+      $(".field.field"+row+userSelection).toggleClass("active");
+      console.log("field: "+row+" "+userSelection); 
+      } 
+      break;
+  } 
+}
+
 
 // detect selected row or column
 document.addEventListener('keydown', function(e){
   e.preventDefault();
-  // aswd for selection of the row or column
-  if( e.key === "a" ){
-    if(myGame.userSelection > 0){
-      myGame.userSelection--;
-    }else{
-      myGame.userSelection = (myGame.n-1);
-    }      
-    myGame.isRow = false;
-  }  
-  if( e.key === "d" ){   
-    if(myGame.userSelection < (myGame.n-1)){
-      myGame.userSelection++;
-    }else{
-      myGame.userSelection = 0;
-    }   
-    myGame.isRow = false;
-  }
-  if( e.key === "w" ){   
-    if(myGame.userSelection > 0){
-      myGame.userSelection--;
-    }else{
-      myGame.userSelection = (myGame.n-1);
-    }   
-    myGame.isRow = true;
-  }
-  if( e.key === "s" ){      
-    if(myGame.userSelection < (myGame.n-1)){
-      myGame.userSelection++;
-    }else{
-      myGame.userSelection = 0;
-    }
-    myGame.isRow = true;
+  // keyes a,s,w,d for selection of the row or column
+  // save previous settinge
+  var sel = myGame.userSelection;
+  var iro = myGame.isRow; 
+  switch(e.key) {
+    case "a":
+      if(myGame.userSelection > 0){
+        myGame.userSelection--;
+      }else{
+        myGame.userSelection = (myGame.n-1);
+      }      
+      myGame.isRow = false;
+      // deactivate old selection and activate newly selected fields
+      activateFieds(iro,sel,myGame.n);
+      activateFieds(myGame.isRow,myGame.userSelection,myGame.n); 
+      break;
+
+    case "d":
+      if(myGame.userSelection < (myGame.n-1)){
+        myGame.userSelection++;
+      }else{
+        myGame.userSelection = 0;
+      }   
+      myGame.isRow = false;
+      // deactivate old selection and activate newly selected fields
+      activateFieds(iro,sel,myGame.n);
+      activateFieds(myGame.isRow,myGame.userSelection,myGame.n); 
+      break;
+
+    case "w":    
+      if(myGame.userSelection > 0){
+        myGame.userSelection--;
+      }else{
+        myGame.userSelection = (myGame.n-1);
+      }   
+      myGame.isRow = true;
+      // deactivate old selection and activate newly selected fields
+      activateFieds(iro,sel,myGame.n);
+      activateFieds(myGame.isRow,myGame.userSelection,myGame.n); 
+      break;
+
+    case "s":    
+      if(myGame.userSelection < (myGame.n-1)){ 
+        myGame.userSelection++;
+      }else{
+        myGame.userSelection = 0;
+      }
+      myGame.isRow = true;
+      // deactivate old selection and activate newly selected fields
+      activateFieds(iro,sel,myGame.n);
+      activateFieds(myGame.isRow,myGame.userSelection,myGame.n);  
+      break;
   } 
-  var selectedFields = [];
-  for(var sel = (myGame.userSelection*myGame.n)+1; sel <= myGame.n*(myGame.userSelection+1); sel++){
-    selectedFields.push(sel);
-  }
-  console.log(sel);
 });
 
 document.addEventListener('keydown', function(e){
