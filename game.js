@@ -172,5 +172,4 @@ Game.prototype.checkWin = function () {
   }else{
     return false;
   }
-  // dispaly win (later: animation)
 }

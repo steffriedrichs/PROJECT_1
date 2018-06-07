@@ -4,7 +4,7 @@ var myGame = new Game();
 $(document).ready(function(){
 
 //get Board Size from user's choice:
-$( "input" ).click(function() {
+$("input, #newGameButton").click(function() {
   myGame.n = Number($("input[name='Size']:checked").attr("id"));
   myGame.board = myGame.randomMatrix(myGame.n);
   myGame.stones = myGame.randomMatrix(myGame.n);
@@ -15,22 +15,22 @@ $( "input" ).click(function() {
   // create correct number (n * n) of DOM elements 
   for(var row = 0; row < myGame.n; row++ ){
     for(var col = 0; col < myGame.n; col++ ){
-    $("#gameBoard").append('<div class="field field'+row+col+' fieldSize'+myGame.n+'x'+myGame.n+'"></div>');
-    $("#gameBoard").append('<div class="stone stone'+row+col+'"></div>');
-    $(".stone.stone"+row+col).css({
-      height:((100/myGame.n)/2)*3, 
-      width: ((100/myGame.n)/2)*3,     
-      top:((100/myGame.n)/4 + 100/myGame.n*row)*3,
-      left: ((100/myGame.n)/4 + 100/myGame.n*col)*3 
-    }); 
-    //display marked fields in different color
-    if(myGame.board[row][col]==1){ //if field has 1 = marked
-      $(".field.field"+row+col).toggleClass("marked"); // selector: ".oneclass.otherclass"
-    } 
-    //add stones to board
-    if(myGame.stones[row][col]==0){ //if stone has 1 = existing
-      $(".stone.stone"+row+col).toggleClass("hidden"); 
-    } 
+      $("#gameBoard").append('<div class="field field'+row+col+' fieldSize'+myGame.n+'x'+myGame.n+'"></div>');
+      $("#gameBoard").append('<div class="stone stone'+row+col+'"></div>');
+      $(".stone.stone"+row+col).css({
+        height:((100/myGame.n)/2)*3, 
+        width: ((100/myGame.n)/2)*3,     
+        top:((100/myGame.n)/4 + 100/myGame.n*row)*3,
+        left: ((100/myGame.n)/4 + 100/myGame.n*col)*3 
+      }); 
+      //display marked fields in different color
+      if(myGame.board[row][col]==1){ //if field has 1 = marked
+        $(".field.field"+row+col).toggleClass("marked"); // selector: ".oneclass.otherclass"
+      } 
+      //add stones to board
+      if(myGame.stones[row][col]==0){ //if stone has 1 = existing
+        $(".stone.stone"+row+col).toggleClass("hidden"); 
+      } 
     }
   }
   // set first row as default activation:
@@ -79,7 +79,6 @@ document.addEventListener('keydown', function(e){
         myGame.userSelection = 0;
       }   
       myGame.isRow = false;
-      // deactivate old selection and activate newly selected fields
       activateFieds(iro,sel,myGame.n);
       activateFieds(myGame.isRow,myGame.userSelection,myGame.n); 
       break;
@@ -91,7 +90,6 @@ document.addEventListener('keydown', function(e){
         myGame.userSelection = (myGame.n-1);
       }   
       myGame.isRow = true;
-      // deactivate old selection and activate newly selected fields
       activateFieds(iro,sel,myGame.n);
       activateFieds(myGame.isRow,myGame.userSelection,myGame.n); 
       break;
@@ -103,7 +101,6 @@ document.addEventListener('keydown', function(e){
         myGame.userSelection = 0;
       }
       myGame.isRow = true;
-      // deactivate old selection and activate newly selected fields
       activateFieds(iro,sel,myGame.n);
       activateFieds(myGame.isRow,myGame.userSelection,myGame.n);  
       break;
