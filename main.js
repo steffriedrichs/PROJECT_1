@@ -8,98 +8,91 @@ $( "input" ).click(function() {
   myGame.n = Number($("input[name='Size']:checked").attr("id"));
   myGame.board = myGame.randomMatrix(myGame.n);
   myGame.stones = myGame.randomMatrix(myGame.n);
-
-  //display Board: create correct number (n * n) of DOM elements 
+  //display Board, empty first 
   $("#gameBoard").empty();
-  var countRow = 0;
-  var countCol = 0;
-  for(var numFields = 0; numFields < myGame.n * myGame.n; numFields++ ){
-    $("#gameBoard").append('<div class="field field'+numFields+' fieldSize'+myGame.n+'x'+myGame.n+'"></div>');
-    $("#gameBoard").append('<div class="stone stone'+numFields+'"></div>');
-    $(".stone.stone"+numFields).css({
+  // create correct number (n * n) of DOM elements 
+  for(var row = 0; row < myGame.n; row++ ){
+    for(var col = 0; col < myGame.n; col++ ){
+    $("#gameBoard").append('<div class="field field'+row+col+' fieldSize'+myGame.n+'x'+myGame.n+'"></div>');
+    $("#gameBoard").append('<div class="stone stone'+row+col+'"></div>');
+    $(".stone.stone"+row+col).css({
       height:((100/myGame.n)/2)*3, 
       width: ((100/myGame.n)/2)*3,     
-      top:((100/myGame.n)/4 + 100/myGame.n*countRow)*3,
-      left: ((100/myGame.n)/4 + 100/myGame.n*countCol)*3 
+      top:((100/myGame.n)/4 + 100/myGame.n*row)*3,
+      left: ((100/myGame.n)/4 + 100/myGame.n*col)*3 
     }); 
-    countCol++;
-    if(countCol%myGame.n == 0){
-      countRow++;
-      countCol = 0;
-    }
-  }
-  //display marked fields in different color:
-  var markedFields = '' + myGame.board;  
-  markedFields = markedFields.split(','); //removes ',' between numbers!
-  for(var f = 0; f < markedFields.length; f++){
-    if(markedFields[f] == 1){
-        //change color of corresponding div - toggle marked class
-        $(".field.field"+f).toggleClass("marked"); // selector: ".oneclass.otherclass"
-    }
-  }
-  //add stones to board - stones can be added to existing field divs as children
-  var existingStones = '' + myGame.stones;  
-  existingStones = existingStones.split(','); 
-  for(var s = 0; s < existingStones.length; s++){
-    if(existingStones[s] == 0){
-       $(".stone.stone"+s).toggleClass("hidden"); 
+    //display marked fields in different color
+    if(myGame.board[row][col]==1){ //if field has 1 = marked
+      $(".field.field"+row+col).toggleClass("marked"); // selector: ".oneclass.otherclass"
+    } 
+    //add stones to board
+    if(myGame.stones[row][col]==1){ //if stone has 1 = existing
+      $(".stone.stone"+row+col).toggleClass("hidden"); 
+    } 
     }
   }
 });
 
-var userSelection = 0;
-var isRow;
+// detect selected row or column
 document.addEventListener('keydown', function(e){
   e.preventDefault();
   // aswd for selection of the row or column
   if( e.key === "a" ){
-    if(userSelection > 0){
-      userSelection--;
+    if(myGame.userSelection > 0){
+      myGame.userSelection--;
     }else{
-      userSelection = (myGame.n-1);
+      myGame.userSelection = (myGame.n-1);
     }      
-    isRow = false;
+    myGame.isRow = false;
   }  
   if( e.key === "d" ){   
-    if(userSelection < (myGame.n-1)){
-      userSelection++;
+    if(myGame.userSelection < (myGame.n-1)){
+      myGame.userSelection++;
     }else{
-      userSelection = 0;
+      myGame.userSelection = 0;
     }   
-    isRow = false;
+    myGame.isRow = false;
   }
   if( e.key === "w" ){   
-    if(userSelection > 0){
-      userSelection--;
+    if(myGame.userSelection > 0){
+      myGame.userSelection--;
     }else{
-      userSelection = (myGame.n-1);
+      myGame.userSelection = (myGame.n-1);
     }   
-    isRow = true;
+    myGame.isRow = true;
   }
   if( e.key === "s" ){      
-    if(userSelection < (myGame.n-1)){
-      userSelection++;
+    if(myGame.userSelection < (myGame.n-1)){
+      myGame.userSelection++;
     }else{
-      userSelection = 0;
+      myGame.userSelection = 0;
     }
-    isRow = true;
+    myGame.isRow = true;
+  } 
+  var selectedFields = [];
+  for(var sel = (myGame.userSelection*myGame.n)+1; sel <= myGame.n*(myGame.userSelection+1); sel++){
+    selectedFields.push(sel);
   }
+  console.log(sel);
+});
 
+document.addEventListener('keydown', function(e){
+  
   var moveMade = false;
   if( e.key === "ArrowLeft" ){      
-    myGame.makeMove(isRow, userSelection, -1);
+    myGame.makeMove(myGame.isRow, myGame.userSelection, -1);
     moveMade = true;
   }  
   if( e.key === "ArrowRight" ){ 
-    myGame.makeMove(isRow, userSelection, 1);
+    myGame.makeMove(myGame.isRow, myGame.userSelection, 1);
     moveMade = true;
   }
   if( e.key === "ArrowUp" ){   
-    myGame.makeMove(isRow, userSelection, 1);
+    myGame.makeMove(myGame.isRow, myGame.userSelection, 1);
     moveMade = true;
   }
   if( e.key === "ArrowDown" ){      
-    myGame.makeMove(isRow, userSelection, -1);
+    myGame.makeMove(myGame.isRow, myGame.userSelection, -1);
     moveMade = true;
   }
   // update stones on board 
@@ -109,16 +102,15 @@ document.addEventListener('keydown', function(e){
   // identify which stones have to be moved by number 'stone0'
   if(moveMade==true){
     for(var j = 1; j <= myGame.n; j++){
-      changedStones.push(j*(userSelection+1));  
+      changedStones.push(j*(myGame.userSelection+1));  
     }
     console.log("These stones were moved: "+changedStones);
   }else{
-    console.log("Nothing changed");
+    // console.log("Nothing changed");
   }
 
   // das sollten wahrscheinlich besser zwei funktionen sein ... 
 });
-
 	
 
 // $( "#target" ).keydown(function() {

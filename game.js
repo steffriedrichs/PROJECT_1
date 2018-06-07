@@ -4,6 +4,8 @@
   this.stones = [];
   this.n = 3;
   this.score = 0;
+  this.isRow = true;
+  this.userSelection = 0;
   }
 
 
