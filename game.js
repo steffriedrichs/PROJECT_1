@@ -47,23 +47,56 @@ Game.prototype.makeMove = function (isRow, userSelection, moveDirection) {
   // userSelection in (0,..., n-1) -> a row or col index
   // moveDirection:  +- 1 
   
-  // if it's a row, use first index as userSelection:
-  if(isRow){
-    //if move can be made update stones array:
-    if(moveDirection == 1 && this.stones[userSelection][this.n-1] == 0){
-      //this.stones[userSelection] = "moved line";
+if(isRow){ 
+  //move right:  
+    if(moveDirection == 1 && this.stones[userSelection][this.n-1] == 0){ 
       this.stones[userSelection].pop(); 
       this.stones[userSelection].unshift(0);
       return true;
-    }else if(moveDirection == -1 && this.stones[userSelection][0] == 0){
+  //move left:    
+    }else if(moveDirection == -1 && this.stones[userSelection][0] == 0){ 
       this.stones[userSelection].shift();
       this.stones[userSelection].push(0);   
       return true;
-    }else{  
-      //return false, if move goes outside board:
-      return false;
+  //move up:    
+    }else if(moveDirection == -2 && userSelection != 0){ 
+      var moveOk = true; //check, if places for moved stones are available
+      for(var i = 0; i < this.n; i++){
+        if(this.stones[userSelection][i]==1 && this.stones[userSelection-1][i]==1){
+          moveOk = false;
+        }
+      }
+      if(moveOk==true){
+        //stones will now be in upper row (current row will be empty)
+        for(var i = 0; i < this.n; i++){
+          // only update positions in upper row to where stones will be shifted,
+          if(this.stones[userSelection][i]==1){ 
+             this.stones[userSelection-1][i] = 1;
+          } 
+          this.stones[userSelection][i] = 0;
+        } 
+        return true;
+      }
+  //move down:
+    }else if(moveDirection == 2 && userSelection < this.n){ 
+      var moveOk = true; //check, if places for moved stones are available
+      for(var i = 0; i < this.n; i++){
+        if(this.stones[userSelection][i]==1 && this.stones[userSelection+1][i]==1){
+          moveOk = false;
+        }
+      }
+      if(moveOk==true){
+        for(var i = 0; i < this.n; i++){
+          if(this.stones[userSelection][i]==1){ 
+            this.stones[userSelection+1][i] = 1;
+          } 
+          this.stones[userSelection][i] = 0;
+        } 
+        return true;
+      }
     }
-  // if it's a column, use second index as userSelection:
+
+// if column
   }else{
     var myCol = [];
     for(var j = 0; j < this.n; j++){
@@ -89,7 +122,6 @@ Game.prototype.makeMove = function (isRow, userSelection, moveDirection) {
     }
   }
 } 
-
 
 // check if game was won:
 Game.prototype.checkWin = function () {

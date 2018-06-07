@@ -110,7 +110,7 @@ document.addEventListener('keydown', function(e){
   } 
 });
 
-function moveStones(moved,isRow,userSelection,direction,n){
+function moveStones(moved,myGame){
   if(moved){
     $(".stone").removeClass("hidden");
     // create new set of stones in graphical representation
@@ -127,33 +127,46 @@ function moveStones(moved,isRow,userSelection,direction,n){
   }
 }
 
-
 document.addEventListener('keydown', function(e){
   var moved = false;
   e.preventDefault();
-  if(myGame.isRow==true) {
+  if(myGame.isRow==true){
     switch(e.key) {
       case "ArrowLeft":  
-        // update stones array:
-        moved = myGame.makeMove(true, myGame.userSelection, -1);
-        // visual display:
-        moveStones(moved, true, myGame.userSelection, -1, myGame.n);
+        moved = myGame.makeMove(true, myGame.userSelection, -1); // update stones array
+        moveStones(moved, myGame); // visual display
         break;
       case "ArrowRight": 
         moved = myGame.makeMove(true, myGame.userSelection, 1);
-        moveStones(moved, true, myGame.userSelection, 1, myGame.n);
+        moveStones(moved, myGame);
         break;
+      case "ArrowUp": 
+        moved = myGame.makeMove(true, myGame.userSelection, -2);
+        moveStones(moved, myGame);
+        break;
+      case "ArrowDown": 
+        moved = myGame.makeMove(true, myGame.userSelection, 2);
+        moveStones(moved, myGame);
+        break; 
     }
   }else{ 
     switch(e.key) {
       case "ArrowUp": 
         moved = myGame.makeMove(false, myGame.userSelection, -1);
-        moveStones(moved, false, myGame.userSelection, -1, myGame.n);
+        moveStones(moved, myGame);
         break;
       case "ArrowDown": 
         moved = myGame.makeMove(false, myGame.userSelection, 1);
-        moveStones(moved, false, myGame.userSelection, 1, myGame.n);
+        moveStones(moved, myGame);
         break;
+      // case "ArrowLeft":  
+      //   moved = myGame.makeMove(false, myGame.userSelection, -2); 
+      //   moveStones(moved, myGame);
+      //   break;
+      // case "ArrowRight": 
+      //   moved = myGame.makeMove(false, myGame.userSelection, 2);
+      //   moveStones(moved, myGame);
+      //   break;        
       }
   }
 });
