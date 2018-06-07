@@ -60,7 +60,7 @@ document.addEventListener('keydown', function(e){
   var iro = myGame.isRow; 
   // get new selection
   switch(e.key){
-    case "a":
+    case "ArrowLeft":
       if(myGame.userSelection > 0){
         myGame.userSelection--;
       }else{
@@ -72,7 +72,7 @@ document.addEventListener('keydown', function(e){
       activateFieds(myGame.isRow,myGame.userSelection,myGame.n); 
       break;
 
-    case "d":
+    case "ArrowRight":
       if(myGame.userSelection < (myGame.n-1)){
         myGame.userSelection++;
       }else{
@@ -83,7 +83,7 @@ document.addEventListener('keydown', function(e){
       activateFieds(myGame.isRow,myGame.userSelection,myGame.n); 
       break;
 
-    case "w":    
+    case "ArrowUp":    
       if(myGame.userSelection > 0){
         myGame.userSelection--;
       }else{
@@ -94,7 +94,7 @@ document.addEventListener('keydown', function(e){
       activateFieds(myGame.isRow,myGame.userSelection,myGame.n); 
       break;
 
-    case "s":    
+    case "ArrowDown":    
       if(myGame.userSelection < (myGame.n-1)){ 
         myGame.userSelection++;
       }else{
@@ -129,38 +129,38 @@ document.addEventListener('keydown', function(e){
   e.preventDefault();
   if(myGame.isRow==true){
     switch(e.key) {
-      case "ArrowLeft":  
+      case "a":  
         moved = myGame.makeMove(true, myGame.userSelection, -1); // update stones array
         moveStones(moved, myGame); // visual display
         break;
-      case "ArrowRight": 
+      case "d": 
         moved = myGame.makeMove(true, myGame.userSelection, 1);
         moveStones(moved, myGame);
         break;
-      case "ArrowUp": 
+      case "w": 
         moved = myGame.makeMove(true, myGame.userSelection, -2);
         moveStones(moved, myGame);
         break;
-      case "ArrowDown": 
+      case "s": 
         moved = myGame.makeMove(true, myGame.userSelection, 2);
         moveStones(moved, myGame);
         break; 
     }
   }else{ 
     switch(e.key) {
-      case "ArrowUp": 
+      case "w": 
         moved = myGame.makeMove(false, myGame.userSelection, -1);
         moveStones(moved, myGame);
         break;
-      case "ArrowDown": 
+      case "s": 
         moved = myGame.makeMove(false, myGame.userSelection, 1);
         moveStones(moved, myGame);
         break;
-      case "ArrowLeft":  
+      case "a":  
         moved = myGame.makeMove(false, myGame.userSelection, -2); 
         moveStones(moved, myGame);
         break;
-      case "ArrowRight": 
+      case "d": 
         moved = myGame.makeMove(false, myGame.userSelection, 2);
         moveStones(moved, myGame);
         break;        

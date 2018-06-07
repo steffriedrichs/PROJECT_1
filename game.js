@@ -79,7 +79,7 @@ Game.prototype.makeMove = function (isRow, userSelection, moveDirection) {
           return true;
         }
     //move down:
-      }else if(moveDirection == 2 && userSelection < this.n){ 
+      }else if(moveDirection == 2 && userSelection < this.n-1){ 
         var moveOk = true; //check, if places for moved stones are available
         for(var i = 0; i < this.n; i++){
           if(this.stones[userSelection][i]==1 && this.stones[userSelection+1][i]==1){
@@ -140,7 +140,7 @@ Game.prototype.makeMove = function (isRow, userSelection, moveDirection) {
           return true;
         }
     //move right:     
-      }else if(moveDirection == 2 && userSelection < this.n){
+      }else if(moveDirection == 2 && userSelection < this.n-1){
         var moveOk = true; //check, if places for moved stones are available
         for(var i = 0; i < this.n; i++){
           if(this.stones[i][userSelection]==1 && this.stones[i][userSelection+1]==1){

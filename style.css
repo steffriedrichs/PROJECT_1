@@ -1,15 +1,21 @@
  /* general properties */
 *{
   font-family: Verdana, 'Lucida Sans Unicode', sans-serif;
-  /* color: #a64073; */
-  color: rgb(209, 108, 25);
+  /* color: rgb(7, 90, 65); */
+  /* color: rgb(209, 108, 25); */
+  color: rgb(240, 216, 210);
 }
 #container{
   width: 96%;
   height: 96%;
   margin: 2% 2% 2% 2%;
-  background:  rgba(226, 161, 39, 0.3);
-  /* background: #d9c4d1; */
+  background: url("DSCN4417.JPG");
+  /* background: url("DSCN5445.JPG"); */
+  /* background: url("DSCN5469.JPG"); */
+  background-repeat: no-repeat;
+  background-size: 120%;
+  /* SAND Farbe: */
+  /* background:  rgba(226, 161, 39, 0.3); */ 
 }
 .flexbox{
   display: flex;
@@ -20,12 +26,10 @@
   width: 100%;
   /* border: 3px solid orangered; */
 }
-
-/* name section */
-  #name{
-    text-align: center;
-    padding: 5% 0% 0% 0%;
-  }
+#name{
+  text-align: center;
+  padding: 5% 0% 0% 0%;
+}
 
 /* main area */
 
@@ -58,9 +62,11 @@
     height: 300px;
     width: 300px;
     margin: 10% 10%;
-    border: 7px solid rgb(173, 55, 25);
+    /* rot: */
+    border: 7px solid  rgba(139, 33, 7, 0.85); 
+    /* border: 7px solid rgb(7, 90, 65); */
     border-radius: 10px;
-    background: white;
+    background: rgba(223, 222, 222, 0.7);
   }
   .stone{
     z-index: 20;
@@ -68,18 +74,24 @@
     justify-content: space-around;
     height: 15%;
     width: 15%;
-    background: rgb(51, 7, 7);
+    background: radial-gradient(circle at 90% 0%, #968f8f, #000);
+    /* background: rgba(51, 7, 7,0.8); */
     border-radius: 100px;
   }
   .field{
     z-index: 10;
     padding: 1% 1% 1% 1%;
-    background: rgb(211, 200, 200);
+    background:rgba(236, 236, 215, 0.5);
+    /* grau: */
+    /* background: rgb(211, 200, 200); */
+    /* sand: */
+    /* background:rgba(226, 161, 39, 0.3); */
     border-radius: 1px;
     position: relative;
   }
   .marked{
-    background: rgb(104, 88, 88);
+    background: rgba(112, 102, 96, 0.5);
+    /* background: rgba(104, 88, 88,0.5); */
   }
   .active{
     border-radius: 1px;
@@ -105,24 +117,6 @@
 .hidden{
   display: none;
 }
-  /* .rowSelector{
-    float: left;
-    border: 2px solid rgba(18, 26, 131, 0.678);
-    border-radius: 25px;
-    height: 30%;
-    width: 97%;
-    margin: 1% 1%;
-  }
-  .colSelector{
-    position: relative;
-    top: 0;
-    border: 2px solid rgba(18, 26, 131, 0.678);
-    border-radius: 25px;
-    height: 97%;
-    width: 29%;
-    margin: 1% 1%;
-  } */
-
   
 /* right column - score + new game button */
   #right-box{
@@ -141,7 +135,7 @@
     padding: 5% 5%;
     margin: 15% 0%;
     border-radius: 20px;
-    background: rgb(167, 38, 6); 
+    background: rgba(167, 38, 6, 0.85); 
     align-self: center; 
   }
 
