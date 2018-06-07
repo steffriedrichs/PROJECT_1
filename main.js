@@ -28,7 +28,7 @@ $( "input" ).click(function() {
       $(".field.field"+row+col).toggleClass("marked"); // selector: ".oneclass.otherclass"
     } 
     //add stones to board
-    if(myGame.stones[row][col]==1){ //if stone has 1 = existing
+    if(myGame.stones[row][col]==0){ //if stone has 1 = existing
       $(".stone.stone"+row+col).toggleClass("hidden"); 
     } 
     }
@@ -42,27 +42,24 @@ function activateFieds(isRow,userSelection,n){
     case true:
       for(var col = 0; col < n; col++){
         $(".field.field"+userSelection+col).toggleClass("active"); 
-        console.log("field: "+userSelection+" "+col);
       }
       break;
     case false:
       for(var row = 0; row < n; row++){
-      $(".field.field"+row+userSelection).toggleClass("active");
-      console.log("field: "+row+" "+userSelection); 
+        $(".field.field"+row+userSelection).toggleClass("active");
       } 
       break;
   } 
 }
 
-
-// detect selected row or column
+// keyes a,s,w,d for selection of the row or column
 document.addEventListener('keydown', function(e){
   e.preventDefault();
-  // keyes a,s,w,d for selection of the row or column
   // save previous settinge
   var sel = myGame.userSelection;
   var iro = myGame.isRow; 
-  switch(e.key) {
+  // get new selection
+  switch(e.key){
     case "a":
       if(myGame.userSelection > 0){
         myGame.userSelection--;
@@ -113,59 +110,53 @@ document.addEventListener('keydown', function(e){
   } 
 });
 
-document.addEventListener('keydown', function(e){
-  
-  var moveMade = false;
-  if( e.key === "ArrowLeft" ){      
-    myGame.makeMove(myGame.isRow, myGame.userSelection, -1);
-    moveMade = true;
-  }  
-  if( e.key === "ArrowRight" ){ 
-    myGame.makeMove(myGame.isRow, myGame.userSelection, 1);
-    moveMade = true;
-  }
-  if( e.key === "ArrowUp" ){   
-    myGame.makeMove(myGame.isRow, myGame.userSelection, 1);
-    moveMade = true;
-  }
-  if( e.key === "ArrowDown" ){      
-    myGame.makeMove(myGame.isRow, myGame.userSelection, -1);
-    moveMade = true;
-  }
-  // update stones on board 
-  // array of changed stone:
-  var changedStones = [];
-
-  // identify which stones have to be moved by number 'stone0'
-  if(moveMade==true){
-    for(var j = 1; j <= myGame.n; j++){
-      changedStones.push(j*(myGame.userSelection+1));  
+function moveStones(moved,isRow,userSelection,direction,n){
+  if(moved){
+    $(".stone").removeClass("hidden");
+    // create new set of stones in graphical representation
+    for(var row = 0; row < myGame.n; row++ ){
+      for(var col = 0; col < myGame.n; col++ ){
+        if(myGame.stones[row][col]==0){ //if stone has 1 = existing
+          $(".stone.stone"+row+col).toggleClass("hidden"); 
+        } 
+      }
     }
-    console.log("These stones were moved: "+changedStones);
-  }else{
-    // console.log("Nothing changed");
   }
+  if(myGame.checkWin()){
+    console.log("gewonnen!");
+  }
+}
 
-  // das sollten wahrscheinlich besser zwei funktionen sein ... 
+
+document.addEventListener('keydown', function(e){
+  var moved = false;
+  e.preventDefault();
+  if(myGame.isRow==true) {
+    switch(e.key) {
+      case "ArrowLeft":  
+        // update stones array:
+        moved = myGame.makeMove(true, myGame.userSelection, -1);
+        // visual display:
+        moveStones(moved, true, myGame.userSelection, -1, myGame.n);
+        break;
+      case "ArrowRight": 
+        moved = myGame.makeMove(true, myGame.userSelection, 1);
+        moveStones(moved, true, myGame.userSelection, 1, myGame.n);
+        break;
+    }
+  }else{ 
+    switch(e.key) {
+      case "ArrowUp": 
+        moved = myGame.makeMove(false, myGame.userSelection, -1);
+        moveStones(moved, false, myGame.userSelection, -1, myGame.n);
+        break;
+      case "ArrowDown": 
+        moved = myGame.makeMove(false, myGame.userSelection, 1);
+        moveStones(moved, false, myGame.userSelection, 1, myGame.n);
+        break;
+      }
+  }
 });
 	
-
-// $( "#target" ).keydown(function() {
-//   alert( "Handler for .keydown() called." );
-// });
-
-// 
-
-
-
-// $( "rowSelector" ).click(function() {
-//    $( this ).toggleClass("inactive");
-// });
-
-//maybe select row/col like in hearts example:
-// $('.heart').click(function(){
-//   $(this).addClass('on');
-//   $(this).prevAll().addClass('on');
-// });
 
 });  // end of document ready
