@@ -159,14 +159,14 @@ document.addEventListener('keydown', function(e){
         moved = myGame.makeMove(false, myGame.userSelection, 1);
         moveStones(moved, myGame);
         break;
-      // case "ArrowLeft":  
-      //   moved = myGame.makeMove(false, myGame.userSelection, -2); 
-      //   moveStones(moved, myGame);
-      //   break;
-      // case "ArrowRight": 
-      //   moved = myGame.makeMove(false, myGame.userSelection, 2);
-      //   moveStones(moved, myGame);
-      //   break;        
+      case "ArrowLeft":  
+        moved = myGame.makeMove(false, myGame.userSelection, -2); 
+        moveStones(moved, myGame);
+        break;
+      case "ArrowRight": 
+        moved = myGame.makeMove(false, myGame.userSelection, 2);
+        moveStones(moved, myGame);
+        break;        
       }
   }
 });
