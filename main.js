@@ -3,16 +3,23 @@ var myGame = new Game();
 
 $(document).ready(function(){
 
-//get Board Size from user's choice:
-$("input, #newGameButton").click(function() {
+//function to load a new game
+function startGame(myGame){
+  // remove "You won" box, when new game is started:
+  // $("#win").fadeOut();
+  $("#win").remove();
+  //get Board Size from user's choice: 
   myGame.n = Number($("input[name='Size']:checked").attr("id"));
   myGame.board = myGame.randomMatrix(myGame.n);
   myGame.stones = myGame.randomMatrix(myGame.n);
   myGame.isRow = true;
   myGame.userSelection = 0;
-  //display Board, empty first 
+  //display Board, empty first: 
   $("#gameBoard").empty();
-  // create correct number (n * n) of DOM elements 
+  // set moves counter to 0:
+  myGame.movesMade = 0;
+  $("#scoreNumbers").replaceWith('<span id="scoreNumbers">0</span>');
+  // create correct number (n * n) of DOM elements: 
   for(var row = 0; row < myGame.n; row++ ){
     for(var col = 0; col < myGame.n; col++ ){
       $("#gameBoard").append('<div class="field field'+row+col+' fieldSize'+myGame.n+'x'+myGame.n+'"></div>');
@@ -35,6 +42,14 @@ $("input, #newGameButton").click(function() {
   }
   // set first row as default activation:
   activateFieds(true,0,myGame.n); 
+}
+
+//initialize a first game to be displayed upon loading:
+startGame(myGame);
+
+// create a new Game when size is changed or "new Game" button is clicked:
+$("input, #newGameButton").click(function(){
+  startGame(myGame);
 });
 
 function activateFieds(isRow,userSelection,n){
@@ -109,8 +124,11 @@ document.addEventListener('keydown', function(e){
 
 function moveStones(moved,myGame){
   if(moved){
+    // update moves:
+    myGame.movesMade++;
+    $("#scoreNumbers").replaceWith('<span id="scoreNumbers">'+myGame.movesMade+'</span>');
+    // create new set of stones for graphical representation:
     $(".stone").removeClass("hidden");
-    // create new set of stones in graphical representation
     for(var row = 0; row < myGame.n; row++ ){
       for(var col = 0; col < myGame.n; col++ ){
         if(myGame.stones[row][col]==0){ //if stone has 1 = existing
@@ -120,7 +138,7 @@ function moveStones(moved,myGame){
     }
   }
   if(myGame.checkWin()){
-    console.log("gewonnen!");
+    $(".flexbox").append('<div id="win"><p>You won!<p><p>With '+myGame.movesMade+' Moves.<p></div>');
   }
 }
 

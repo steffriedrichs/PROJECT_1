@@ -1,17 +1,18 @@
  /* general properties */
 *{
-  font-family: Verdana, 'Lucida Sans Unicode', sans-serif;
-  /* color: rgb(7, 90, 65); */
-  /* color: rgb(209, 108, 25); */
-  color: rgb(240, 216, 210);
+  font-family: Courier New, Verdana, 'Lucida Sans Unicode', sans-serif;
+  color: rgb(240, 228, 220);
+  font-size: 22px;
+  font-weight: 600;
+}
+.text{
+  font-size: 30px;
 }
 #container{
   width: 96%;
   height: 96%;
   margin: 2% 2% 2% 2%;
   background: url("DSCN4417.JPG");
-  /* background: url("DSCN5445.JPG"); */
-  /* background: url("DSCN5469.JPG"); */
   background-repeat: no-repeat;
   background-size: 120%;
   /* SAND Farbe: */
@@ -29,6 +30,8 @@
 #name{
   text-align: center;
   padding: 5% 0% 0% 0%;
+  color: rgba(167, 38, 6, 0.85);
+  font-size: 40px;
 }
 
 /* main area */
@@ -62,9 +65,7 @@
     height: 300px;
     width: 300px;
     margin: 10% 10%;
-    /* rot: */
     border: 7px solid  rgba(139, 33, 7, 0.85); 
-    /* border: 7px solid rgb(7, 90, 65); */
     border-radius: 10px;
     background: rgba(223, 222, 222, 0.7);
   }
@@ -74,30 +75,25 @@
     justify-content: space-around;
     height: 15%;
     width: 15%;
-    background: radial-gradient(circle at 90% 0%, #968f8f, #000);
-    /* background: rgba(51, 7, 7,0.8); */
+    background: radial-gradient(circle at 100% 0%, #968f8f, #000);
     border-radius: 100px;
   }
   .field{
     z-index: 10;
     padding: 1% 1% 1% 1%;
-    background:rgba(236, 236, 215, 0.5);
-    /* grau: */
-    /* background: rgb(211, 200, 200); */
-    /* sand: */
-    /* background:rgba(226, 161, 39, 0.3); */
+    background:rgba(245, 242, 235, 0.5);
     border-radius: 1px;
     position: relative;
   }
   .marked{
-    background: rgba(112, 102, 96, 0.5);
+    background: rgba(66, 54, 48, 0.5);
   }
   .active{
     opacity: 0.4;
   }
   .fieldSize3x3{
-    height: 30%;
-    width: 30%;
+    height: 30.5%;
+    width: 30.5%;
   }
   .fieldSize4x4{
     height: 22%;
@@ -108,9 +104,8 @@
     width: 17%;
   }
   .fieldSize6x6{
-    /* soll 14% sein */
-    height: 13.5%; 
-    width: 13.5%;
+    height: 14%; 
+    width: 14%;
   }
 .hidden{
   display: none;
@@ -135,5 +130,19 @@
     border-radius: 20px;
     background: rgba(167, 38, 6, 0.85); 
     align-self: center; 
+    outline: none; 
+    font-weight: 800;
+  }
+  #win{
+    z-index: 40;
+    align-self: center;
+    padding: 3% 6%;
+    border-radius: 10px;
+    border: solid 2px rgb(243, 222, 222);
+    position: absolute;
+    text-align: center;
+    font-weight: 600;
+    font-size: 50px;
+    background: rgba(167, 38, 6, 0.95); 
   }
 

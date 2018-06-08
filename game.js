@@ -6,6 +6,7 @@
   this.score = 0;
   this.isRow = true;
   this.userSelection = 0;
+  this.movesMade = 0;
   }
 
 
