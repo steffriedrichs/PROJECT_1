@@ -56,12 +56,20 @@ function activateFieds(isRow,userSelection,n){
   switch(isRow) {
     case true:
       for(var col = 0; col < n; col++){
-        $(".field.field"+userSelection+col).toggleClass("active"); 
+          if( $(".field.field"+userSelection+col).hasClass("marked") ){
+            $(".field.field"+userSelection+col).toggleClass("markedActive");  
+          }else{
+            $(".field.field"+userSelection+col).toggleClass("fieldActive"); 
+          }
       }
       break;
     case false:
       for(var row = 0; row < n; row++){
-        $(".field.field"+row+userSelection).toggleClass("active");
+        if( $(".field.field"+row+userSelection).hasClass("marked") ){
+          $(".field.field"+row+userSelection).toggleClass("markedActive");
+        }else{
+          $(".field.field"+row+userSelection).toggleClass("fieldActive");
+        }
       } 
       break;
   } 

@@ -1,22 +1,25 @@
  /* general properties */
 *{
   font-family: Courier New, Verdana, 'Lucida Sans Unicode', sans-serif;
-  color: rgb(240, 228, 220);
+  color: rgb(240, 230, 224);
   font-size: 22px;
   font-weight: 600;
 }
 .text{
-  font-size: 30px;
+  text-shadow: 2px 0 0 rgb(231, 165, 77), 0px -1px 0 rgb(231, 165, 77), 0 2px 0 rgb(56, 40, 18), -1px 0px 0 rgb(56, 40, 18); 
+  font-size: 40px;
 }
 #container{
   width: 96%;
   height: 96%;
   margin: 2% 2% 2% 2%;
-  background: url("DSCN4417.JPG");
+  background: url("sunset_part.jpg");
+  /* background: url("DSCN4417.JPG"); */
+  /* background: radial-gradient( #f5741d, #000);   */
   background-repeat: no-repeat;
-  background-size: 120%;
+  background-size: 100%;
   /* SAND Farbe: */
-  /* background:  rgba(226, 161, 39, 0.3); */ 
+  /* background:  rgba(226, 161, 39, 0.3);  */
 }
 .flexbox{
   display: flex;
@@ -28,10 +31,12 @@
   /* border: 3px solid orangered; */
 }
 #name{
+  font-family: Verdana;
+  color: rgba(114, 29, 8, 0.925);
+  text-shadow: 2px 0 0 rgb(231, 165, 77), 0px -1px 0 rgb(231, 165, 77); 
   text-align: center;
   padding: 5% 0% 0% 0%;
-  color: rgba(167, 38, 6, 0.85);
-  font-size: 40px;
+  font-size: 80px;
 }
 
 /* main area */
@@ -53,7 +58,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 55%;   
+    width: 40%;   
     height: 100%;
   }
   #gameBoard{
@@ -65,9 +70,11 @@
     height: 300px;
     width: 300px;
     margin: 10% 10%;
-    border: 7px solid  rgba(139, 33, 7, 0.85); 
+    border: 7px solid rgba(117, 28, 5, 0.884); 
+    /* border: 7px solid rgba(141, 35, 8, 0.85);  */
     border-radius: 10px;
     background: rgba(223, 222, 222, 0.7);
+    box-shadow: 2px 0 0 rgb(231, 165, 77), 0px -1px 0 rgb(231, 165, 77), 0 2px 0 rgb(56, 40, 18), -1px 0px 0 rgb(56, 40, 18); 
   }
   .stone{
     z-index: 20;
@@ -81,15 +88,19 @@
   .field{
     z-index: 10;
     padding: 1% 1% 1% 1%;
-    background:rgba(245, 242, 235, 0.5);
+    background:rgba(235, 223, 196, 0.6);
     border-radius: 1px;
     position: relative;
   }
   .marked{
-    background: rgba(66, 54, 48, 0.5);
+    background: rgba(66, 54, 48, 0.6);
   }
-  .active{
-    opacity: 0.4;
+  .fieldActive{
+    background: rgba(228, 164, 90, 0.5);
+  }
+  .markedActive{
+    /* background: rgba(114, 49, 23, 0.5); */
+    background: rgba(167, 38, 6, 0.7);
   }
   .fieldSize3x3{
     height: 30.5%;
