@@ -1,9 +1,13 @@
-# PROJECT_1
+# First simple web app game
 
-**Project goal:** Write your first ever web application. 
+A game in which the user needs to shift stones randomly distributed on a board to predefined positions.
 
-**Result:** A game in which the user needs to shift stones randomly distributed on a board to predefined positions. 
+![My image](https://github.com/steffriedrichs/PROJECT_1/blob/master/screenshot.jpg)
 
-**How to play:** Row / column selection with arrow keys, Stome movement with a,s,w,d keys. 
+
+**Play it here:** 
+
+http://htmlpreview.github.io/?https://github.com/steffriedrichs/PROJECT_1/blob/master/index.html
+
 
 **Stack:** JavaScript, HTML, CSS
