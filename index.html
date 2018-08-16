@@ -8,38 +8,42 @@
   <title>Project 1 - Game</title>
 </head>
 <body>
-<div id="container">
-<!-- header --> 
-  <div id="header">
-    <h1 id="name">Sunset Stones</h1>
-  </div>
-  <!-- left --> 
-  <div class="flexbox">
-  <div id="left-box">
-      <form> 
-        <h2 class="text" id="size">Size</h2>        
-        <input type="radio" id="3" name="Size" value="3 x 3" checked="checked">
-        <label for="3">3 x 3</label><br>
-        <input type="radio" id="4" name="Size" value="4 x 4">
-        <label for="4">4 x 4</label><br>
-        <input type="radio" id="5" name="Size" value="5 x 5">
-        <label for="5">5 x 5</label><br> 
-        <input type="radio" id="6" name="Size" value="6 x 6">
-        <label for="6">6 x 6</label><br> 
-      </form>
-  </div>
-  <!-- middle --> 
-  <div id="middle-box">
-    <div class="flex" id="gameBoard">
+  <div id="container">
+    <!-- header --> 
+    <div id="header">
+      <h1 id="name">Sunset Stones</h1>
     </div>
-  </div>
-  <!-- right --> 
-  <div id="right-box">
-      <h2 class="text" id="score">Moves</h2>
-      <p><span id="scoreNumbers">0</span></p>
-      <button type="button" id="newGameButton">New Game</button>
-  </div>
-</div>
-</div>  
+    <!-- left --> 
+    <div class="flexbox">
+      <div id="left-box">
+          <form> 
+            <h2 class="text" id="size">Size</h2>        
+            <input type="radio" id="3" name="Size" value="3 x 3" checked="checked">
+            <label for="3">3 x 3</label><br>
+            <input type="radio" id="4" name="Size" value="4 x 4">
+            <label for="4">4 x 4</label><br>
+            <input type="radio" id="5" name="Size" value="5 x 5">
+            <label for="5">5 x 5</label><br> 
+            <input type="radio" id="6" name="Size" value="6 x 6">
+            <label for="6">6 x 6</label><br> 
+          </form>
+      </div>
+      <!-- middle --> 
+      <div id="middle-box">
+        <div class="flex" id="gameBoard">
+        </div>
+      </div>
+      <!-- right --> 
+      <div id="right-box">
+          <h2 class="text" id="score">Moves</h2>
+          <p><span id="scoreNumbers">0</span></p>
+          <button type="button" id="newGameButton">New Game</button>
+      </div>
+    </div>
+    <div id="game-rules"> 
+      <p>Select a row or column using the arrow keys<br/>
+      Move stones with w,s,a,d keys to the dark fields</p>
+    </div>
+  </div>  
 </body>  
 </html>
